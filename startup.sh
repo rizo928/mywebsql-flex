@@ -3,7 +3,7 @@
 set -e
 
 if [ -f /etc/configured ]; then
-        echo 'already configured'
+        echo 'we're already configured'
 else
       #code that need to run only one time ....
         
