@@ -2,17 +2,24 @@
 
 set -e
 
+# check if mywebsql successfully installed
+if [ -d /var/www/mywebsql/config ]; then
+	echo 'mywebsql installed...'
+	if [ -d /config ]; then
+		echo 'config directory exists'
+		cp /config/* /var/www/mywebsql/config
+		cp /var/www/mywebsql/config/* /config
+	else
+		echo 'config directory does NOT exist'
+	fi
+else
+	echo 'mywebsql NOT installed...'
+fi
+
 if [ -f /etc/configured ]; then
         echo 'we are already configured'
 else
       #code that need to run only one time ....
-
-	# check if mywebsql successfully installed
-	if [ -f /var/www/mywebsql/config/servers.php ]; then
-		echo 'mywebsql installed...'
-	else
-		echo 'mywebsql NOT installed...'
-	fi
         
         #needed for fix problem with ubuntu and cron
         update-locale 
