@@ -1,7 +1,7 @@
-#name of container: docker-mywebsql
-#versison of container: 0.2.3
+#name of container: mywebsql-flex
+#versison of container: 0.2.3.x
 FROM quantumobject/docker-baseimage:15.10
-MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
+MAINTAINER Jay Watts "cysix928@gmail.com"
 
 #add repository and update the container
 #Installation of nesesary package/software for this containers...
