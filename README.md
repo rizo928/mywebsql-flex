@@ -2,7 +2,8 @@
 
 Initial version for this docker container cloned from QuantumObject/docker-mywebsql.
 
-The goal is to update the container to allow more flexiblity in terms of specifying the /var/www volume on instantiation.
+This updated version allows more flexiblity in terms of mapping a volume for updating myWebSQL configuration files.
+See below for instructions on mapping the /config directory.  See the startup.sh script in the GitHub repository for change details.
 
 Docker container for [MyWebSQL][3]
 
@@ -34,6 +35,11 @@ or for to link to MYSQL container
     
 in this two case the server: custom server option will be used the db like domain name. 
 
+If you are interested changing myWebSQL configuration files, simply map a local directory to the container diretory /config.  For example:
+
+	$ docker run -d -p xxxx:80 -v /mylocaldir:/config rizo928/mywebsql-flex 
+
+If the /config directory is mapped (exists in the container), the myWebSQL configuration files will be copied into it when the container is first started.  You can then modify the myWebSQL configuration files in /mylocaldir, restart the container and your configuration changes will be live.  This is highly useful to for instance specify your specific database instances in servers.php so they show up in the login drop down list.
 
 ## More Info
 
