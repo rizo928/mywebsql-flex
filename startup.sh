@@ -7,7 +7,11 @@ if [ -d /var/www/mywebsql/config ]; then
 	echo 'mywebsql installed...'
 	if [ -d /config ]; then
 		echo 'config directory exists'
-		cp /config/* /var/www/mywebsql/config
+		if [ "$(ls -A /config)" ]; then
+			cp /config/* /var/www/mywebsql/config
+		else
+    			echo "/config is Empty"
+		fi
 		cp /var/www/mywebsql/config/* /config
 	else
 		echo 'config directory does NOT exist'
